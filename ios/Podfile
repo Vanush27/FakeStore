@@ -19,6 +19,7 @@ prepare_react_native_project!
 # ```
 flipper_config = ENV['NO_FLIPPER'] == "1" ? FlipperConfiguration.disabled : FlipperConfiguration.enabled
 
+
 linkage = ENV['USE_FRAMEWORKS']
 if linkage != nil
   Pod::UI.puts "Configuring Pod with #{linkage}ally linked Frameworks".green
@@ -28,6 +29,8 @@ end
 target 'FakeStor' do
   config = use_native_modules!
 
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+  
   use_react_native!(
     :path => config[:reactNativePath],
     # Enables Flipper.
